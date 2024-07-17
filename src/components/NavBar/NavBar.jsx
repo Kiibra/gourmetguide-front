@@ -1,23 +1,16 @@
 // npm modules
 import { NavLink } from 'react-router-dom'
 
-const NavBar = ({ user, handleLogout }) => {
+const NavBar = () => {
   return (
-    <nav>
-      {user ?
-        <ul>
-          <li>Welcome, {user.name}</li>
-          <li><NavLink to="/profiles">Profiles</NavLink></li>
-          <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
-          <li><NavLink to="/auth/change-password">Change Password</NavLink></li>
-        </ul>
-      :
-        <ul>
-          <li><NavLink to="/auth/login">Log In</NavLink></li>
-          <li><NavLink to="/auth/signup">Sign Up</NavLink></li>
-        </ul>
-      }
-    </nav>
+  <nav>
+    <div>
+      <NavLink />
+      <h2>Gourmet Guide</h2>
+      <h2><NavLink to="/Landing">Landing</NavLink></h2>
+      <h2><NavLink to="/recipes">All Recipes</NavLink></h2>
+    </div>
+</nav>
   )
 }
 
