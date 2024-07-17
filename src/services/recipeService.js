@@ -66,15 +66,35 @@ const updateRecipe = async (recipeId, recipe) => {
     return data
 
   } catch (error) {
-    throw new Error(`Error updating recipe: ${error.message}`)
+    throw new Error('Error updating recipe:', error)
   }
 }
 
+const recipeDelete = async (recipeId, recipe) => {
+  try {
+    const res = await fetch(`${baseUrl}/recipes/${recipeId}/delete/`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(recipe),
+    })
 
+    if (!res.ok) {
+      throw new Error('Error deleting recipe')
+    }
+    const data = await res.json()
+    return data
+
+  } catch (error) {
+    throw new Error('Error deleting recipe')
+  }
+}
 
 export default {
   getAllRecipes,
   addRecipe, 
   recipeDetail,
   updateRecipe,
+  recipeDelete, 
 }

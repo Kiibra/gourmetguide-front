@@ -1,21 +1,29 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { NavLink} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import RecipeService from '../../services/RecipeService'
-import { NavLink } from 'react-router-dom'
 
 
 const RecipeDetailPage = () => {
   const { recipeId } = useParams()
   const [recipe, setRecipe] = useState(null)
-
+  
   useEffect(() => {
     const fetchRecipeDetail = async () => {
       const data = await RecipeService.recipeDetail(recipeId)
       setRecipe(data.recipe)
     }
-
+    
     fetchRecipeDetail()
   }, [recipeId])
+  
+  const navigate = useNavigate()
+
+  const handleDelete = () => {
+    RecipeService.recipeDelete(recipeId)
+    navigate('/recipes')
+  }
 
   if (!recipe) return <h4>Recipe not found!</h4>
 
@@ -30,6 +38,7 @@ const RecipeDetailPage = () => {
       </div>
       <NavLink to='/recipes'><button id="back-btn">Back</button></NavLink>
       <NavLink to={`/recipes/${recipeId}/update`}><button id="update-btn">Edit</button></NavLink>
+      <button id="del-btn" onClick={handleDelete}>Delete</button>
     </div>
   )
 }

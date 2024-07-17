@@ -8,6 +8,7 @@ import RecipesListPage from './pages/RecipesListPage/RecipesListPage'
 import AddRecipePage from './pages/AddRecipePage/AddRecipePage'
 import RecipeDetailPage from './pages/RecipeDetailPage/RecipeDetailPage'
 import EditRecipePage from './pages/EditRecipePage/EditRecipePage'
+
 // styles
 import './App.css'
 
