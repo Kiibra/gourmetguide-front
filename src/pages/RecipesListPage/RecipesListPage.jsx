@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import recipeService from "../../services/RecipeService"
 
 const RecipesListPage = () => {
@@ -19,15 +19,16 @@ const RecipesListPage = () => {
 
   return ( 
     <>
-    <h1>All Recipes</h1>
-    <hr />
-    {recipes.map((recipe) => (
-      <div key={recipe.id} >
-          <Link to={`/recipes/${recipe.id}`}>
-            <h2>{recipe.title}</h2>
-          </Link>
+      <h1 id="header" >Recipes List</h1>
+      <div className='RecipeList' >
+        {recipes.map((recipe) => (
+          <NavLink key={recipe.id} to={`/recipes/${recipe.id}`}>
+            <div className='RecipeCard'>
+              <h3>{recipe.title}</h3>
+            </div>
+          </NavLink>
+        ))}
       </div>
-    ))}
     </>
   )
 }
