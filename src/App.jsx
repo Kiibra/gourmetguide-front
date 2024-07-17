@@ -5,6 +5,7 @@ import NavBar from './components/NavBar/NavBar'
 // pages
 import Landing from './pages/Landing/Landing'
 import RecipesListPage from './pages/RecipesListPage/RecipesListPage'
+import AddRecipePage from './pages/AddRecipePage/AddRecipePage'
 
 // styles
 import './App.css'
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/Landing" element={<Landing />} />
         <Route path="/recipes" element={<RecipesListPage />} />
+        <Route path="/recipes/addrecipe" element={<AddRecipePage />} />
       </Routes>
     </>
   )
