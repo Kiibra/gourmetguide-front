@@ -35,7 +35,21 @@ const addRecipe = async (recipe) => {
   }
 }
 
+const recipeDetail = async (recipeId) => {
+  try {
+    const res = await fetch(`${baseUrl}/recipes/${recipeId}/`)
+    if (!res.ok) {
+      throw new Error('Error fetching recipe details')
+    }
+    const data = await res.json()
+    return data
+  } catch (error) {
+    throw new Error(`Error fetching recipe details: ${error.message}`)
+  }
+}
+
 export default {
   getAllRecipes,
   addRecipe, 
+  recipeDetail,
 }
