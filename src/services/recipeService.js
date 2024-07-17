@@ -48,8 +48,33 @@ const recipeDetail = async (recipeId) => {
   }
 }
 
+const updateRecipe = async (recipeId, recipe) => {
+  try {
+    const res = await fetch(`${baseUrl}/recipes/${recipeId}/update/`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(recipe),
+    })
+
+    if (!res.ok) {
+      throw new Error('Error updating recipe')
+    }
+    const data = await res.json()
+    console.log(data)
+    return data
+
+  } catch (error) {
+    throw new Error(`Error updating recipe: ${error.message}`)
+  }
+}
+
+
+
 export default {
   getAllRecipes,
   addRecipe, 
   recipeDetail,
+  updateRecipe,
 }
