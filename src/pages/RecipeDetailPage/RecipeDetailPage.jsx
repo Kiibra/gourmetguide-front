@@ -4,6 +4,8 @@ import { NavLink} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import RecipeService from '../../services/RecipeService'
 
+//css
+import styles from './RecipeDetail.module.css'
 
 const RecipeDetailPage = () => {
   const { recipeId } = useParams()
@@ -29,17 +31,17 @@ const RecipeDetailPage = () => {
   if (!recipe) return <h4>Recipe not found!</h4>
 
   return (
-    <div className="RecipePage">
+    <div className={styles.container}>
       <h1>Recipe Details</h1>
       <hr />
       <div>
         <h3>{recipe.title}</h3>
-        <p>{recipe.ingredients}</p>
-        <p>{recipe.instructions}</p>
+        <p><span className={styles.label}>Ingredients:</span> {recipe.ingredients}</p>
+        <p><span className={styles.label}>Instructions:</span> {recipe.instructions}</p>
       </div>
-      <NavLink to='/recipes'><button id="back-btn">Back</button></NavLink>
-      <NavLink to={`/recipes/${recipeId}/update`}><button id="update-btn">Edit</button></NavLink>
-      <button id="del-btn" onClick={handleDelete}>Delete</button>
+      <NavLink to='/recipes'><button id={styles.backBtn}>Back</button></NavLink>
+      <NavLink to={`/recipes/${recipeId}/update`}><button id={styles.updateBtn}>Edit</button></NavLink>
+      <button id={styles.delBtn} onClick={handleDelete}>Delete</button>
     </div>
   )
 }
