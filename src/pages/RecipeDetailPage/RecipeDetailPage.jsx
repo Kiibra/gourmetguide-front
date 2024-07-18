@@ -23,6 +23,7 @@ const RecipeDetailPage = () => {
   const handleDelete = async () => {
     RecipeService.recipe.recipeDelete(recipeId)
     navigate('/recipes')
+    setRecipe(recipe)
   }
 
   if (!recipe) return <h4>Recipe not found!</h4>

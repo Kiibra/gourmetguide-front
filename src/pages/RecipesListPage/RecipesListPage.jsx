@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react"
 import { NavLink } from "react-router-dom"
-import recipeService from "../../services/RecipeService"
+import RecipeService from "../../services/RecipeService"
+
+//css
+import styles from "./Recipes.module.css"
 
 const RecipesListPage = () => {
   const [recipes, setRecipes] = useState([])
   
   useEffect ( () => {
     const fetchData = async () => {
-      const recipesData = await recipeService.getAllRecipes()
+      const recipesData = await RecipeService.getAllRecipes()
       setRecipes(recipesData.recipes)
     }
 
@@ -20,10 +23,10 @@ const RecipesListPage = () => {
   return ( 
     <>
       <h1 id="header" >Recipes List</h1>
-      <div className='RecipeList' >
+      <div className={styles.container} >
         {recipes.map((recipe) => (
           <NavLink key={recipe.id} to={`/recipes/${recipe.id}`}>
-            <div className='RecipeCard'>
+            <div className={styles.RecipeCard}>
               <h3>{recipe.title}</h3>
             </div>
           </NavLink>

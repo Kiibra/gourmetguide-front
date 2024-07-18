@@ -13,7 +13,10 @@ body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-image: url('/images/herbs-and-spices.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: center;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -32,9 +35,7 @@ nav > ul {
   padding: 16px 32px;
 }
 
-a,
-a:visited {
-  color: #00d8ff;
+a {
   text-decoration: none;
 }
 
