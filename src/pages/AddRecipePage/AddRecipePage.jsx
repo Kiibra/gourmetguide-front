@@ -48,35 +48,35 @@ const AddRecipePage = () => {
       <hr />
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor='title-input'>Title</label>
+          <label htmlFor="title-input">Title</label>
           <input
             type="text"
             name="title"
-            id='title-input'
+            id="title-input"
             value={formData.title}
             onChange={handleChange}
           />
         </div>
         <div>
-          <label htmlFor='ingredients-input'>Ingredients</label>
+          <label htmlFor="ingredients-input">Ingredients</label>
           <input
             type="text"
             name="ingredients"
-            id='ingredients-input'
+            id="ingredients-input"
             value={formData.ingredients}
             onChange={handleChange}
           />
         </div>
         <div>
-          <label htmlFor='instructions-input'>Instructions</label>
+          <label htmlFor="instructions-input">Instructions</label>
           <textarea
             name="instructions"
-            id='instructions-input'
+            id="instructions-input"
             value={formData.instructions}
             onChange={handleChange}
           />
         </div>
-      {error && <div style={{ color: 'red' }}>{error}</div>}
+        {error && <div style={{ color: 'red' }}>{error}</div>}
         <button type="submit">Submit</button>
       </form>
     </div>
