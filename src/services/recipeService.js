@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:8000'
+const baseUrl = 'http://3.141.39.147:8000'
 
 const getAllRecipes = async () => {
   try {
