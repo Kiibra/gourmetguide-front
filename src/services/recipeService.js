@@ -44,7 +44,7 @@ const recipeDetail = async (recipeId) => {
     const data = await res.json()
     return data
   } catch (error) {
-    throw new Error(`Error fetching recipe details: ${error.message}`)
+    throw new Error(`Error fetching recipe details:`, error)
   }
 }
 
@@ -62,7 +62,6 @@ const updateRecipe = async (recipeId, recipe) => {
       throw new Error('Error updating recipe')
     }
     const data = await res.json()
-    console.log(data)
     return data
 
   } catch (error) {
@@ -70,21 +69,12 @@ const updateRecipe = async (recipeId, recipe) => {
   }
 }
 
-const recipeDelete = async (recipeId, recipe) => {
+const recipeDelete = async (recipeId) => {
   try {
     const res = await fetch(`${baseUrl}/recipes/${recipeId}/delete/`, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(recipe),
     })
-
-    if (!res.ok) {
-      throw new Error('Error deleting recipe')
-    }
-    const data = await res.json()
-    return data
+    return await res.json()
 
   } catch (error) {
     throw new Error('Error deleting recipe')
