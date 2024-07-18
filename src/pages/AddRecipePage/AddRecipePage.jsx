@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom'
 //service
 import RecipeService from '../../services/RecipeService'
 
+//css
+import styles from './AddRecipe.module.css'
+
 const AddRecipePage = () => {
   const [formData, setFormData] = useState({
     title: '',
@@ -43,11 +46,11 @@ const AddRecipePage = () => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <h2>Add New Recipe</h2>
       <hr />
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.formGroup}>
           <label htmlFor="title-input">Title</label>
           <input
             type="text"
@@ -56,8 +59,6 @@ const AddRecipePage = () => {
             value={formData.title}
             onChange={handleChange}
           />
-        </div>
-        <div>
           <label htmlFor="ingredients-input">Ingredients</label>
           <input
             type="text"
@@ -66,8 +67,6 @@ const AddRecipePage = () => {
             value={formData.ingredients}
             onChange={handleChange}
           />
-        </div>
-        <div>
           <label htmlFor="instructions-input">Instructions</label>
           <textarea
             name="instructions"
@@ -76,7 +75,7 @@ const AddRecipePage = () => {
             onChange={handleChange}
           />
         </div>
-        {error && <div style={{ color: 'red' }}>{error}</div>}
+        {error && <div className={styles.error}>{error}</div>}
         <button type="submit">Submit</button>
       </form>
     </div>
