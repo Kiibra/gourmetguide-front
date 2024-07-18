@@ -20,8 +20,8 @@ const RecipeDetailPage = () => {
   
   const navigate = useNavigate()
 
-  const handleDelete = () => {
-    RecipeService.recipeDelete(recipeId)
+  const handleDelete = async () => {
+    RecipeService.recipe.recipeDelete(recipeId)
     navigate('/recipes')
   }
 
