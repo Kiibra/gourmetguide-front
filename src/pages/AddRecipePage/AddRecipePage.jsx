@@ -13,16 +13,17 @@ const AddRecipePage = () => {
     title: '',
     ingredients: '',
     instructions: '',
+    photo: null,
   })
 
   const [error, setError] = useState(null)
   const navigate = useNavigate()
 
   const handleChange = (e) => {
-    const { name, value } = e.target
+    const { name, value, files } = e.target
     setFormData({
       ...formData,
-      [name]: value
+      [name]: name === 'photo' ? files[0] : value,
     })
   }
 
@@ -30,15 +31,21 @@ const AddRecipePage = () => {
     e.preventDefault()
     setError(null)
 
-    const { title, ingredients, instructions } = formData
+    const { title, ingredients, instructions, photo } = formData
 
-    if (!title || !ingredients || !instructions) {
+    if (!title || !ingredients || !instructions || !photo) {
       setError('All fields are required')
       return
     }
 
     try {
-      await RecipeService.addRecipe(formData)
+      const formDataToSend = new FormData()
+      formDataToSend.append('title', title)
+      formDataToSend.append('ingredients', ingredients)
+      formDataToSend.append('instructions', instructions)
+      formDataToSend.append('photo', photo)
+
+      await RecipeService.addRecipe(formDataToSend)
       navigate('/recipes')
     } catch (error) {
       setError(error.message)
@@ -72,6 +79,13 @@ const AddRecipePage = () => {
             name="instructions"
             id="instructions-input"
             value={formData.instructions}
+            onChange={handleChange}
+          />
+          <label htmlFor="photo-input">Photo</label>
+          <input
+            type="file"
+            name="photo"
+            id="photo-input"
             onChange={handleChange}
           />
         </div>

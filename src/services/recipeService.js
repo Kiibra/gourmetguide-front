@@ -1,4 +1,4 @@
-const baseUrl = 'http://3.141.39.147:8000'
+const baseUrl = 'http://127.0.0.1:8000'
 
 const getAllRecipes = async () => {
   try {
@@ -69,15 +69,31 @@ const updateRecipe = async (recipeId, recipe) => {
   }
 }
 
-const recipeDelete = async (recipeId) => {
+export const recipeDelete = async (recipeId) => {
   try {
     const res = await fetch(`${baseUrl}/recipes/${recipeId}/delete/`, {
       method: 'DELETE',
     })
-    return await res.json()
 
+    if (res.ok) { // Checking if res status is ok
+      // Handle empty responses (such as HTTP 204 No Content)
+      if (res.status === 204) {
+        return null; // No content, successful deletion
+      }
+      //  check the ContentType header of the res before trying to parse it as JSON - parse JSON only if the res has a JSON content type
+      const contentType = res.headers.get('Content-Type');
+      if (contentType && contentType.includes('application/json')) {
+        return await res.json(); // Parse and return JSON data
+      }
+      // If it's not JSON, just return the text response
+      const text = await res.text()
+      return text
+    } else {
+      throw new Error(`Server error: ${res.status} ${res.statusText}`)
+    }
   } catch (error) {
-    throw new Error('Error deleting recipe')
+    console.error('Error deleting recipe:', error)
+    throw error
   }
 }
 

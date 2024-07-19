@@ -1,7 +1,10 @@
+//npm modules
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { NavLink} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+
+//services
 import RecipeService from '../../services/RecipeService'
 
 //css
@@ -23,9 +26,8 @@ const RecipeDetailPage = () => {
   const navigate = useNavigate()
 
   const handleDelete = async () => {
-    RecipeService.recipe.recipeDelete(recipeId)
-    navigate('/recipes')
-    setRecipe(recipe)
+    RecipeService.recipeDelete(recipeId);
+      navigate('/recipes')
   }
 
   if (!recipe) return <h4>Recipe not found!</h4>
@@ -36,6 +38,7 @@ const RecipeDetailPage = () => {
       <hr />
       <div>
         <h3>{recipe.title}</h3>
+        <p>{recipe.photo}</p>
         <p><span className={styles.label}>Ingredients:</span> {recipe.ingredients}</p>
         <p><span className={styles.label}>Instructions:</span> {recipe.instructions}</p>
       </div>

@@ -1,6 +1,6 @@
 /* Container styling */
 .container {
-  max-width: 500px;
+  max-width: 600px;
   margin: 90px auto;
   padding: 20px;
   background-color: #bcb9b9b2;
@@ -24,6 +24,13 @@
 
 .container h2 {
   color: #2b302a;
+}
+
+.container hr {
+  margin-bottom: 20px;
+  border: none; 
+  height: 2px; 
+  background-color: #a3e479; 
 }
 
 label {
