@@ -21,19 +21,19 @@
 .container h2 > a {
   color: #5f5d5d;
   text-decoration: none; 
-  padding: 10px 20px; 
-  border-radius: 5px; 
+  padding: 8px 18px; 
+  border-radius: 30px; 
   transition: background-color 0.3s, color 0.3s; 
 }
 
 .container h2 a:hover {
-  background-color: #9d9999; 
-  color: #f7f7f7; 
+  background-color: #cb733a;
+  color: #f7f7f7;
 }
 
 Active link styling
 .container h2 a.active {
-  background-color: #d6d1d1;
+  background-color: #ad5d5d;
   color: #070606;
 }
 

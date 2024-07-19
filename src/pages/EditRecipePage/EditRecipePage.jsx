@@ -5,8 +5,11 @@ import { useParams, useNavigate } from 'react-router-dom'
 //service
 import RecipeService from '../../services/RecipeService'
 
+//css
+import styles from './EditRecipe.module.css'
+
 const EditRecipePage = () => {
-  const { recipeId } = useParams();
+  const { recipeId } = useParams()
   const [formData, setFormData] = useState({
     title: '',
     ingredients: '',
@@ -28,6 +31,13 @@ const EditRecipePage = () => {
     e.preventDefault()
     setError(null)
 
+    const { title, ingredients, instructions } = formData
+
+    if (!title || !ingredients || !instructions) {
+      setError('All fields are required')
+      return
+    }
+
     try {
       await RecipeService.updateRecipe(recipeId, formData)
       navigate(`/recipes/${recipeId}`)
@@ -37,11 +47,11 @@ const EditRecipePage = () => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <h2>Edit Recipe</h2>
       <hr />
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div className={styles.formGroup}>
           <label>Title</label>
           <input
             type="text"
@@ -49,8 +59,6 @@ const EditRecipePage = () => {
             value={formData.title}
             onChange={handleChange}
           />
-        </div>
-        <div>
           <label>Ingredients</label>
           <input
             type="text"
@@ -58,8 +66,6 @@ const EditRecipePage = () => {
             value={formData.ingredients}
             onChange={handleChange}
           />
-        </div>
-        <div>
           <label>Instructions</label>
           <textarea
             name="instructions"
@@ -67,11 +73,11 @@ const EditRecipePage = () => {
             onChange={handleChange}
           />
         </div>
-        {error && <div style={{ color: 'red' }}>{error}</div>}
+        {error && <div className={styles.error}>{error}</div>}
         <button type="submit">Submit</button>
       </form>
     </div>
-  );
-};
+  )
+}
 
 export default EditRecipePage
