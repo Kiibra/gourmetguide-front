@@ -9,7 +9,7 @@
 
 .container h2:first-child {
   margin: 0;
-  color: #5f5d5d;
+  color: #e46962;
   font-size: 1.8rem;
 }
 
@@ -18,24 +18,25 @@
   font-size: 1.2rem; 
 }
 
-.container h2 > a {
-  color: #5f5d5d;
+.container a {
+  color: #e46962;
   text-decoration: none; 
   padding: 8px 18px; 
   border-radius: 30px; 
+  font-weight: 600;
+  font-size: 1.4rem;
   transition: background-color 0.3s, color 0.3s; 
 }
 
-.container h2 a:hover {
-  background-color: #cb733a;
-  color: #f7f7f7;
+.container a:hover {
+  background-color:  #a0c891; 
+  color: #f3f1f1;
 }
 
-Active link styling
-.container h2 a.active {
-  background-color: #ad5d5d;
-  color: #070606;
-}
+/* .container h2 a:active {
+  background-color: #a0c891;
+  color: #b7b5b5;
+} */
 
 @media (max-width: 768px) {
   .container {

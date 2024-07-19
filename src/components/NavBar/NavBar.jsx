@@ -9,9 +9,9 @@ const NavBar = () => {
     <nav>
       <div className={styles.container}>
         <h2>Gourmet Guide</h2>
-        <h2><NavLink to="/" className={styles.active}>Landing</NavLink></h2>
-        <h2><NavLink to="/recipes" className={styles.active}>All Recipes</NavLink></h2>
-        <h2><NavLink to="/recipes/addrecipe" className={styles.active}>Add Recipe</NavLink></h2>
+        <NavLink to="/" className={styles.active}>Landing</NavLink>
+        <NavLink to="/recipes" className={styles.active}>All Recipes</NavLink>
+        <NavLink to="/recipes/addrecipe" className={styles.active}>Add Recipe</NavLink>
       </div>
     </nav>
   )

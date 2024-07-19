@@ -22,7 +22,7 @@ const RecipesListPage = () => {
 
   return ( 
     <>
-      <h1 id="header" >Recipes List</h1>
+      <h1 id="header" >Recipes</h1>
       <div className={styles.container} >
         {recipes.map((recipe) => (
           <NavLink key={recipe.id} to={`/recipes/${recipe.id}`}>
