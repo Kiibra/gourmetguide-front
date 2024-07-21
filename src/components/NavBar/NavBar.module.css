@@ -3,8 +3,13 @@
   justify-content: space-between;
   align-items: center;
   background-color: #f5f1f1; 
-  padding: 20px 30px; 
+  /* padding: 20px 30px;  */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.container img {
+  height: 80px;
+  width: 120px;
 }
 
 .container h2:first-child {
@@ -21,7 +26,7 @@
 .container a {
   color: #e46962;
   text-decoration: none; 
-  padding: 8px 18px; 
+  /* padding: 8px 18px;  */
   border-radius: 30px; 
   font-weight: 600;
   font-size: 1.4rem;

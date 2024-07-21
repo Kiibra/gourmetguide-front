@@ -13,7 +13,7 @@ body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   color: rgba(255, 255, 255, 0.87);
-  background-image: url('/images/herbs-and-spices.jpg');
+  background-image: url('/public/assets/images/herbs-and-spices.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: center;
@@ -36,7 +36,7 @@ nav > ul {
 
 nav > div {
   margin: 0;
-  padding: 16px 32px;
+  padding: 6px 18px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
